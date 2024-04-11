@@ -1,8 +1,13 @@
 package Members;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class Info {
-    private String id;
-    private String pw;
+    private String id;      // 계정 아이디
+    private String pw;      // 계정 비밀번호
 
     public void setId(String id) {
         this.id = id;
@@ -18,11 +23,6 @@ public class Info {
 
     public String getPw() {
         return pw;
-    }
-
-    Info(String id, String pw){
-        setId(id);
-        setPw(pw);
     }
 
 }
