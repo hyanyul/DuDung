@@ -2,6 +2,7 @@ package Main;
 
 import GameCharacter.*;
 import Members.*;
+import GamePlay.*;
 
 import java.util.Objects;
 import java.util.Scanner;
@@ -16,6 +17,7 @@ public class Exe {
         SignUp su = new SignUp();       // signUp 객체 생성
         SignIn si = new SignIn();
         CreateCharacter cc = new CreateCharacter();
+        ChoiceCharacter chc = new ChoiceCharacter();
         String[] signInArr = new String[2];
 
         label : while(true) {
@@ -43,12 +45,23 @@ public class Exe {
                     }
 
                 case 4:
-
+                    if(signInArr[0] != null || signInArr[1] != null) {
+                        chc.choiceChar(signInArr[0]);
+                        break;
+                    } else {
+                        System.out.println("로그인 후 게임 플레이가 가능합니다.");
+                        break;
+                    }
 
                 case 5:
-                    signInArr = null;
-                    System.out.println("로그아웃 되었습니다.");
-                    break;
+                    if(signInArr[0] != null || signInArr[1] != null) {
+                        signInArr = null;
+                        System.out.println("로그아웃 되었습니다.");
+                        break;
+                    } else {
+                        System.out.println("이미 로그아웃 되어 있습니다.");
+                        break;
+                    }
 
                 case 6:
                     System.out.println("종료되었습니다.");

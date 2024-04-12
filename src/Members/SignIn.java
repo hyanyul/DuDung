@@ -3,6 +3,7 @@ package Members;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.Scanner;
 import java.sql.*;
 
@@ -52,14 +53,14 @@ public class SignIn {
 
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            System.out.println("JDBC 로드 성공");
+//            System.out.println("JDBC 로드 성공");
 
             String url = "jdbc:oracle:thin:@localhost:1521:xe";
             String user = "ADAM";
             String password = "1234";
 
             conn = DriverManager.getConnection(url, user, password);
-            System.out.println("DB 연결 성공");
+//            System.out.println("DB 연결 성공");
 
             String sql = "SELECT * FROM MEMBERS";
 
@@ -87,6 +88,14 @@ public class SignIn {
             return null;
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            try {
+                Objects.requireNonNull(st).close();
+                Objects.requireNonNull(rs).close();
+                conn.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }

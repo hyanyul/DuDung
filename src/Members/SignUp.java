@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class SignUp {
+    static Scanner sc = new Scanner(System.in);
     public void signUp(){       // 회원가입 - 아이디와 비밀번호 입력 받아서 db에 저장
         String inputId = inputId(); 
         String inputPw = inputPw();
