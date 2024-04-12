@@ -3,7 +3,7 @@ package Job;
 import GamePlay.Dice;
 
 public class Tanker extends Job {
-    Tanker(){
+    public Tanker(){
         setJobName("방패병");
         setHP(140);
         setMP(90);
@@ -11,6 +11,8 @@ public class Tanker extends Job {
         setNowHP(140);
         setNowMP(90);
         setNowCP(70);
+        setExp(0);
+        setLevel(1);
     }
 
     @Override
@@ -105,5 +107,18 @@ public class Tanker extends Job {
             System.out.println("방어 실패");
             return 0;
         }
+    }
+    
+    @Override
+    public int jobSkillMenu() {
+        System.out.println("동작 선택");
+        System.out.println("""
+                1. 방패 휘두르기
+                2. 공격력 올리기
+                3. 방어
+                4. 도망치기""");
+        int choiceSkill = sc.nextInt();
+
+        return choiceSkill;
     }
 }

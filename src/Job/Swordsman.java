@@ -3,7 +3,7 @@ package Job;
 import GamePlay.Dice;
 
 public class Swordsman extends Job{
-    Swordsman(){
+    public Swordsman(){
         setJobName("검사");
         setHP(100);
         setMP(80);
@@ -11,6 +11,8 @@ public class Swordsman extends Job{
         setNowHP(100);
         setNowMP(80);
         setNowCP(120);
+        setExp(0);
+        setLevel(1);
     }
 
     @Override
@@ -103,5 +105,18 @@ public class Swordsman extends Job{
             System.out.println("급소 베기 공격 실패");
             return 0;
         }
+    }
+
+    @Override
+    public int jobSkillMenu() {
+        System.out.println("동작 선택");
+        System.out.println("""
+                1. 검 휘두르기
+                2. 검기 쏘아보내기
+                3. 급소 베기
+                4. 도망치기""");
+        int choiceSkill = sc.nextInt();
+
+        return choiceSkill;
     }
 }

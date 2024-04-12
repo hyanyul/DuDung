@@ -8,6 +8,7 @@ public class Monster {
     private double MP;
     private double nowCP;
     private double CP;
+    private int giveExp;
 
 
     public String getMonsterName() {
@@ -64,6 +65,14 @@ public class Monster {
 
     public void setNowCP(double nowCP) {
         this.nowCP = nowCP;
+    }
+
+    public int getGiveExp() {
+        return giveExp;
+    }
+
+    public void setGiveExp(int giveExp) {
+        this.giveExp = giveExp;
     }
 
     public double monsterAttack(){

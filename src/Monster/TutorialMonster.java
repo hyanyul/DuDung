@@ -1,7 +1,7 @@
 package Monster;
 
-public class tutorialMonster extends Monster{
-    tutorialMonster(){
+public class TutorialMonster extends Monster{
+    public TutorialMonster(){
         setMonsterName("튜토리얼용 잡몹");
         setHP(10);
         setMP(10);
@@ -9,6 +9,7 @@ public class tutorialMonster extends Monster{
         setNowHP(10);
         setNowMP(10);
         setNowCP(10);
+        setGiveExp(10);
     }
 
     @Override

@@ -3,7 +3,7 @@ package Job;
 import GamePlay.Dice;
 
 public class Wizard extends Job{
-    Wizard(){
+    public Wizard(){
         setJobName("법사");
         setHP(70);
         setMP(125);
@@ -11,6 +11,8 @@ public class Wizard extends Job{
         setNowHP(70);
         setNowMP(125);
         setNowCP(105);
+        setExp(0);
+        setLevel(1);
     }
 
     @Override
@@ -111,5 +113,18 @@ public class Wizard extends Job{
             System.out.println("힐링 실패");
             return 0;
         }
+    }
+
+    @Override
+    public int jobSkillMenu() {
+        System.out.println("동작 선택");
+        System.out.println("""
+                1. 지팡이 휘두르기
+                2. 마법 공격
+                3. 힐링
+                4. 도망치기""");
+        int choiceSkill = sc.nextInt();
+
+        return choiceSkill;
     }
 }

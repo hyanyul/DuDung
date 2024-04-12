@@ -57,7 +57,6 @@ public class CreateCharacter {
         Connection conn = null;
         PreparedStatement pstm = null;
 
-
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");   // jdbc 연결
             System.out.println("JDBC Driver 로드 성공");
@@ -96,5 +95,9 @@ public class CreateCharacter {
                 e.printStackTrace();
             }
         }
+    }
+
+    public static void checkJob(){
+
     }
 }

@@ -5,5 +5,6 @@ public class testGP {
         Scenario s = new Scenario();
         String[] arr = {"1", "2", "3"};
         s.start(arr);
+        s.tutorial(arr);
     };
 }
