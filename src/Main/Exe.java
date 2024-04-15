@@ -8,6 +8,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Exe {
+    static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
         run();
     }
@@ -21,10 +22,8 @@ public class Exe {
         String[] signInArr = new String[2];
 
         label : while(true) {
-            System.out.println("1. 회원가입 | 2. 로그인 | 3. 캐릭터 생성 | 4. 게임 플레이 | 5. 로그아웃 | 6. 종료");
-            System.out.print("선택: ");
-            int choice = sc.nextInt();
 
+            int choice = menu();
 
             switch (choice) {
                 case 1:
@@ -46,7 +45,14 @@ public class Exe {
 
                 case 4:
                     if(signInArr[0] != null || signInArr[1] != null) {
-                        chc.choiceChar(signInArr[0]);
+
+                        GamePlay gp = new GamePlay();
+
+                        String[] getChar = chc.choiceChar(signInArr[0]);
+                        int[] getStatus = chc.getStatus(signInArr[0], getChar[0]);
+
+                        gp.gamePlay(signInArr[0], getChar, getStatus);
+
                         break;
                     } else {
                         System.out.println("로그인 후 게임 플레이가 가능합니다.");
@@ -64,9 +70,16 @@ public class Exe {
                     }
 
                 case 6:
+                    sc.close();
                     System.out.println("종료되었습니다.");
                     break label;
             }
         }
+    }
+
+    public static int menu(){
+        System.out.println("1. 회원가입 | 2. 로그인 | 3. 캐릭터 생성 | 4. 게임 플레이 | 5. 로그아웃 | 6. 종료");
+        System.out.print("선택: ");
+        return sc.nextInt();
     }
 }

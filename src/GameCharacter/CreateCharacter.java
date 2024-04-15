@@ -68,13 +68,43 @@ public class CreateCharacter {
             conn = DriverManager.getConnection(url, user, pw);  // db 로드
             System.out.println("DB 연결 성공");
 
-            String sql = "INSERT INTO GAME_CHARACTER VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO GAME_CHARACTER VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             pstm = conn.prepareStatement(sql);
             pstm.setString(1, id);
             pstm.setString(2, nickName);
             pstm.setString(3, tribe);
             pstm.setString(4, job);
+            pstm.setInt(13, 0);
+
+            if (job.equals("방패병")){
+                pstm.setDouble(5, 140);
+                pstm.setDouble(6, 140);
+                pstm.setDouble(7, 90);
+                pstm.setDouble(8, 90);
+                pstm.setDouble(9, 70);
+                pstm.setDouble(10, 70);
+                pstm.setDouble(11, 0);
+                pstm.setDouble(12, 1);
+            } else if (job.equals("검사")){
+                pstm.setDouble(5, 100);
+                pstm.setDouble(6, 100);
+                pstm.setDouble(7, 80);
+                pstm.setDouble(8, 80);
+                pstm.setDouble(9, 120);
+                pstm.setDouble(10, 120);
+                pstm.setDouble(11, 0);
+                pstm.setDouble(12, 1);
+            } else if (job.equals("법사")){
+                pstm.setDouble(5, 70);
+                pstm.setDouble(6, 70);
+                pstm.setDouble(7, 125);
+                pstm.setDouble(8, 125);
+                pstm.setDouble(9, 105);
+                pstm.setDouble(10, 105);
+                pstm.setDouble(11, 0);
+                pstm.setDouble(12, 1);
+            }
 
             int res = pstm.executeUpdate();
 
@@ -95,9 +125,5 @@ public class CreateCharacter {
                 e.printStackTrace();
             }
         }
-    }
-
-    public static void checkJob(){
-
     }
 }

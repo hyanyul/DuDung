@@ -3,20 +3,20 @@ package Job;
 import GamePlay.Dice;
 
 public class Tanker extends Job {
-    public Tanker(){
-        setJobName("방패병");
-        setHP(140);
-        setMP(90);
-        setCP(70);
-        setNowHP(140);
-        setNowMP(90);
-        setNowCP(70);
-        setExp(0);
-        setLevel(1);
-    }
+//    public Tanker(){
+//        setJobName("방패병");
+//        setHP(140);
+//        setMP(90);
+//        setCP(70);
+//        setNowHP(140);
+//        setNowMP(90);
+//        setNowCP(70);
+//        setExp(0);
+//        setLevel(1);
+//    }
 
     @Override
-    public double skillAttack() {
+    public int skillAttack(int[] getStatus) {
 
         System.out.println("방패 휘두르기 공격 시도");
 
@@ -39,7 +39,7 @@ public class Tanker extends Job {
 
         if(rdInt >= 2) {
             System.out.println("방패 휘두르기 공격 성공");
-            return getNowCP() * 0.1;
+            return (int)(getStatus[5] * 0.1);
         } else{
             System.out.println("방패 휘두르기 공격 실패");
             return 0;
@@ -47,10 +47,15 @@ public class Tanker extends Job {
     }
 
     @Override
-    public double skillMp() {
+    public int skillMp(int[] getStatus) {
         System.out.println("공격력 올리기 시도");
 
-        setNowMP(getNowMP() - 5);
+        if(getStatus[3] < 5){
+            System.out.println("마나가 부족하여 스킬을 사용할 수 없습니다.");
+            return 0;
+        }
+
+        getStatus[3] -= 5;
 
         try {
             Thread.sleep(300);
@@ -58,7 +63,7 @@ public class Tanker extends Job {
             throw new RuntimeException(e);
         }
 
-        System.out.println("주사위를 굴립니다.(2 이상 성공)");
+        System.out.println("주사위를 굴립니다.(3 이상 성공)");
 
         try {
             Thread.sleep(800);
@@ -69,8 +74,8 @@ public class Tanker extends Job {
         int rdInt = Dice.dice();
         System.out.println("주사위: " + rdInt);
 
-        if(rdInt >= 2) {
-            setCP(getNowCP() + 5);
+        if(rdInt >= 3) {
+            getStatus[5] += 5;
             System.out.println("공격력 올리기 성공");
             return 1;
         } else{
@@ -80,7 +85,7 @@ public class Tanker extends Job {
     }
 
     @Override
-    public double skillSpecial() {
+    public int skillSpecial(int[] getStatus) {
         System.out.println("방어 시도");
 
         try {

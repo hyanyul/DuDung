@@ -2,12 +2,12 @@ package Monster;
 
 public class Monster {
     private String monsterName;
-    private double nowHP;
-    private double HP;
-    private double nowMP;
-    private double MP;
-    private double nowCP;
-    private double CP;
+    private int nowHP;
+    private int HP;
+//    private int nowMP;
+    private int MP;
+//    private int nowCP;
+    private int CP;
     private int giveExp;
 
 
@@ -19,53 +19,53 @@ public class Monster {
         this.monsterName = monsterName;
     }
 
-    public double getHP() {
+    public int getHP() {
         return HP;
     }
 
-    public void setHP(double HP) {
+    public void setHP(int HP) {
         this.HP = HP;
     }
 
-    public double getMP() {
+    public int getMP() {
         return MP;
     }
 
-    public void setMP(double MP) {
+    public void setMP(int MP) {
         this.MP = MP;
     }
 
-    public double getCP() {
+    public int getCP() {
         return CP;
     }
 
-    public void setCP(double CP) {
+    public void setCP(int CP) {
         this.CP = CP;
     }
 
-    public double getNowHP() {
+    public int getNowHP() {
         return nowHP;
     }
 
-    public void setNowHP(double nowHP) {
+    public void setNowHP(int nowHP) {
         this.nowHP = nowHP;
     }
-
-    public double getNowMP() {
-        return nowMP;
-    }
-
-    public void setNowMP(double nowMP) {
-        this.nowMP = nowMP;
-    }
-
-    public double getNowCP() {
-        return nowCP;
-    }
-
-    public void setNowCP(double nowCP) {
-        this.nowCP = nowCP;
-    }
+//
+//    public int getNowMP() {
+//        return nowMP;
+//    }
+//
+//    public void setNowMP(int nowMP) {
+//        this.nowMP = nowMP;
+//    }
+//
+//    public int getNowCP() {
+//        return nowCP;
+//    }
+//
+//    public void setNowCP(int nowCP) {
+//        this.nowCP = nowCP;
+//    }
 
     public int getGiveExp() {
         return giveExp;
@@ -75,12 +75,20 @@ public class Monster {
         this.giveExp = giveExp;
     }
 
-    public double monsterAttack(){
+    public int monsterAttack(int[] getStatus){
         System.out.println("몬스터 공격");
         return 0;
     }
     
     public void monsterDie(){
         System.out.println("몬스터 퇴치 완료");
+    }
+
+    public void monsterStat(){
+        System.out.println("몬스터 스텟");
+    }
+
+    public static void giveExp(int[] getStatus, Monster m){
+        getStatus[6] += m.getGiveExp();
     }
 }

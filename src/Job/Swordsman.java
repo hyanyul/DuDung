@@ -3,20 +3,9 @@ package Job;
 import GamePlay.Dice;
 
 public class Swordsman extends Job{
-    public Swordsman(){
-        setJobName("검사");
-        setHP(100);
-        setMP(80);
-        setCP(120);
-        setNowHP(100);
-        setNowMP(80);
-        setNowCP(120);
-        setExp(0);
-        setLevel(1);
-    }
 
     @Override
-    public double skillAttack() {
+    public int skillAttack(int[] getStatus) {
         System.out.println("검 휘두르기 공격 시도");
 
         try {
@@ -38,7 +27,7 @@ public class Swordsman extends Job{
 
         if(rdInt >= 2) {
             System.out.println("검 휘두르기 공격 성공");
-            return getNowCP() * 0.1;
+            return (int)(getStatus[5] * 0.1);
         } else{
             System.out.println("검 휘두르기 공격 실패");
             return 0;
@@ -46,10 +35,15 @@ public class Swordsman extends Job{
     }
 
     @Override
-    public double skillMp() {
+    public int skillMp(int[] getStatus) {
         System.out.println("검기 쏘아보내기 공격 시도");
 
-        setNowMP(getNowMP() - 5);
+        if(getStatus[3] < 5){
+            System.out.println("마나가 부족하여 스킬을 사용할 수 없습니다.");
+            return 0;
+        }
+
+        getStatus[3]  -= 5;
 
         try {
             Thread.sleep(300);
@@ -57,7 +51,7 @@ public class Swordsman extends Job{
             throw new RuntimeException(e);
         }
 
-        System.out.println("주사위를 굴립니다.(2 이상 성공)");
+        System.out.println("주사위를 굴립니다.(3 이상 성공)");
 
         try {
             Thread.sleep(800);
@@ -68,9 +62,9 @@ public class Swordsman extends Job{
         int rdInt = Dice.dice();
         System.out.println("주사위: " + rdInt);
 
-        if(rdInt >= 2) {
+        if(rdInt >= 3) {
             System.out.println("검기 쏘아보내기 공격 성공");
-            return (getNowCP() + getNowCP() * 0.2) * 0.1;
+            return (int)((getStatus[5] + getStatus[5] * 0.2) * 0.1);
         } else{
             System.out.println("검기 쏘아보내기 공격 실패");
             return 0;
@@ -78,7 +72,7 @@ public class Swordsman extends Job{
     }
 
     @Override
-    public double skillSpecial() {
+    public int skillSpecial(int[] getStatus) {
         System.out.println("급소 베기 공격 시도");
 
         try {
@@ -100,7 +94,7 @@ public class Swordsman extends Job{
 
         if(rdInt >= 4) {
             System.out.println("급소 베기 공격 성공");
-            return (getNowCP() + getNowCP() * 0.6) * 0.1;
+            return (int)((getStatus[5] + getStatus[5] * 0.6) * 0.1);
         } else{
             System.out.println("급소 베기 공격 실패");
             return 0;
