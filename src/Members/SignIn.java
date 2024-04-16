@@ -32,7 +32,7 @@ public class SignIn {
     public static String inputId(){
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("[로그인] 아이디를 입력하세요: ");
+        System.out.print("[로그인] 아이디를 입력하세요: ");
 
         return sc.nextLine();
     }
@@ -40,7 +40,7 @@ public class SignIn {
     public static String inputPw(){
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("[로그인] 비밀번호를 입력하세요: ");
+        System.out.print("[로그인] 비밀번호를 입력하세요: ");
 
         return sc.nextLine();
     }
@@ -85,7 +85,8 @@ public class SignIn {
             System.out.println("로그인 실패");
             System.out.println("존재하지 않는 계정이거나 잘못 입력하였습니다.");
 
-            return null;
+
+            return new String[2];
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         } finally {

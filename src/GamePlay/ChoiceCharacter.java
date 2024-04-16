@@ -8,10 +8,10 @@ import java.util.Scanner;
 public class ChoiceCharacter {
     Scanner sc = new Scanner(System.in);
 
-    public String[] choiceChar(String id) {
+    public String[] choiceChar(String id, String fucn) {
         ArrayList<String> charNickNameArr = checkChar(id);
 
-        System.out.println("플레이할 캐릭터의 번호를 입력하세요: ");
+        System.out.printf("\n%s할 캐릭터의 번호를 입력하세요: ", fucn);
         int choice = sc.nextInt() - 1;
         sc.nextLine();
 
@@ -43,7 +43,7 @@ public class ChoiceCharacter {
             rs = st.executeQuery(sql);
 
             int i = 1;
-
+            System.out.println("\n[캐릭터 목록]");
             while (rs.next()) {
                 String ID = rs.getString("ID");
 

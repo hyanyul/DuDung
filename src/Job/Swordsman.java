@@ -1,28 +1,19 @@
 package Job;
 
-import GamePlay.Dice;
+import GamePlay.Function;
 
 public class Swordsman extends Job{
-
     @Override
     public int skillAttack(int[] getStatus) {
         System.out.println("검 휘두르기 공격 시도");
 
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Function.timeSleep(300);
 
         System.out.println("주사위를 굴립니다.(2 이상 성공)");
 
-        try {
-            Thread.sleep(800);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Function.timeSleep(800);
 
-        int rdInt = Dice.dice();
+        int rdInt = Function.dice();
         System.out.println("주사위: " + rdInt);
 
         if(rdInt >= 2) {
@@ -45,21 +36,12 @@ public class Swordsman extends Job{
 
         getStatus[3]  -= 5;
 
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Function.timeSleep(300);
 
         System.out.println("주사위를 굴립니다.(3 이상 성공)");
 
-        try {
-            Thread.sleep(800);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
-        int rdInt = Dice.dice();
+        Function.timeSleep(800);
+        int rdInt = Function.dice();
         System.out.println("주사위: " + rdInt);
 
         if(rdInt >= 3) {
@@ -75,21 +57,13 @@ public class Swordsman extends Job{
     public int skillSpecial(int[] getStatus) {
         System.out.println("급소 베기 공격 시도");
 
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Function.timeSleep(300);
 
         System.out.println("주사위를 굴립니다.(4 이상 성공)");
 
-        try {
-            Thread.sleep(800);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Function.timeSleep(800);
 
-        int rdInt = Dice.dice();
+        int rdInt = Function.dice();
         System.out.println("주사위: " + rdInt);
 
         if(rdInt >= 4) {
@@ -103,13 +77,14 @@ public class Swordsman extends Job{
 
     @Override
     public int jobSkillMenu() {
-        System.out.println("동작 선택");
-        System.out.println("""
+        System.out.println("\n[동작 선택]");
+        System.out.print("""
                 1. 검 휘두르기
                 2. 검기 쏘아보내기
                 3. 급소 베기
-                4. 도망치기""");
+                4. 도망치기\n>> """);
         int choiceSkill = sc.nextInt();
+        sc.nextLine();
 
         return choiceSkill;
     }

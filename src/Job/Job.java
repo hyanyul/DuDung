@@ -1,5 +1,5 @@
 package Job;
-import GamePlay.Dice;
+import GamePlay.Function;
 
 import java.util.Scanner;
 
@@ -33,7 +33,7 @@ public class Job {
             throw new RuntimeException(e);
         }
 
-        int rdInt = Dice.dice();
+        int rdInt = Function.dice();
         System.out.println("주사위: " + rdInt);
 
         if (rdInt >= 3){
@@ -54,7 +54,7 @@ public class Job {
         return 0;
     }
 
-    public void levelPlus(int[] getStatus){
+    public static void levelPlus(int[] getStatus){
         System.out.printf("현재 경험치: %d", getStatus[6]);
         if(getStatus[6] >= 20 && getStatus[6] < 50){
             getStatus[7] = 2;
@@ -84,11 +84,5 @@ public class Job {
             getStatus[7] = 10;
             System.out.println("레벨 업! 10레벨이 되었습니다.");
         }
-    }
-
-    public void statusInfo(int[] getStatus){
-        System.out.printf("""
-                [현재 상황]
-                HP: %d, MP: %d, CP: %d\n""", getStatus[1], getStatus[3], getStatus[5]);
     }
 }

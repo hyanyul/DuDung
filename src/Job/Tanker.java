@@ -1,40 +1,20 @@
 package Job;
 
-import GamePlay.Dice;
+import GamePlay.Function;
 
 public class Tanker extends Job {
-//    public Tanker(){
-//        setJobName("방패병");
-//        setHP(140);
-//        setMP(90);
-//        setCP(70);
-//        setNowHP(140);
-//        setNowMP(90);
-//        setNowCP(70);
-//        setExp(0);
-//        setLevel(1);
-//    }
-
     @Override
     public int skillAttack(int[] getStatus) {
 
         System.out.println("방패 휘두르기 공격 시도");
 
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Function.timeSleep(300);
 
         System.out.println("주사위를 굴립니다.(2 이상 성공)");
 
-        try {
-            Thread.sleep(800);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Function.timeSleep(800);
 
-        int rdInt = Dice.dice();
+        int rdInt = Function.dice();
         System.out.println("주사위: " + rdInt);
 
         if(rdInt >= 2) {
@@ -57,21 +37,13 @@ public class Tanker extends Job {
 
         getStatus[3] -= 5;
 
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Function.timeSleep(300);
 
         System.out.println("주사위를 굴립니다.(3 이상 성공)");
 
-        try {
-            Thread.sleep(800);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Function.timeSleep(800);
 
-        int rdInt = Dice.dice();
+        int rdInt = Function.dice();
         System.out.println("주사위: " + rdInt);
 
         if(rdInt >= 3) {
@@ -88,21 +60,13 @@ public class Tanker extends Job {
     public int skillSpecial(int[] getStatus) {
         System.out.println("방어 시도");
 
-        try {
-            Thread.sleep(300);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Function.timeSleep(300);
 
         System.out.println("주사위를 굴립니다.(3 이상 성공)");
 
-        try {
-            Thread.sleep(800);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        Function.timeSleep(800);
 
-        int rdInt = Dice.dice();
+        int rdInt = Function.dice();
         System.out.println("주사위: " + rdInt);
 
         if(rdInt >= 3) {
@@ -116,13 +80,14 @@ public class Tanker extends Job {
     
     @Override
     public int jobSkillMenu() {
-        System.out.println("동작 선택");
-        System.out.println("""
+        System.out.println("\n[동작 선택]");
+        System.out.print("""
                 1. 방패 휘두르기
                 2. 공격력 올리기
                 3. 방어
-                4. 도망치기""");
+                4. 도망치기\n>> """);
         int choiceSkill = sc.nextInt();
+        sc.nextLine();
 
         return choiceSkill;
     }

@@ -4,9 +4,7 @@ public class Monster {
     private String monsterName;
     private int nowHP;
     private int HP;
-//    private int nowMP;
     private int MP;
-//    private int nowCP;
     private int CP;
     private int giveExp;
 
@@ -50,22 +48,6 @@ public class Monster {
     public void setNowHP(int nowHP) {
         this.nowHP = nowHP;
     }
-//
-//    public int getNowMP() {
-//        return nowMP;
-//    }
-//
-//    public void setNowMP(int nowMP) {
-//        this.nowMP = nowMP;
-//    }
-//
-//    public int getNowCP() {
-//        return nowCP;
-//    }
-//
-//    public void setNowCP(int nowCP) {
-//        this.nowCP = nowCP;
-//    }
 
     public int getGiveExp() {
         return giveExp;
@@ -80,7 +62,7 @@ public class Monster {
         return 0;
     }
     
-    public void monsterDie(){
+    public void monsterDie(int[] getStatus){
         System.out.println("몬스터 퇴치 완료");
     }
 

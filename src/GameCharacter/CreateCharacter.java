@@ -14,6 +14,74 @@ public class CreateCharacter {
         inputChar(inputId, nickName, tribe, job);
     }
 
+    public void resetChar(String inputId, String[] getChar){
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+            String url = "jdbc:oracle:thin:@localhost:1521:xe";
+            String user = "ADAM";
+            String password = "1234";
+
+            conn = DriverManager.getConnection(url, user, password);
+
+            String sql = "UPDATE GAME_CHARACTER SET HP = ?, NOWHP = ?, MP = ?, " +
+                    "NOWMP = ?, CP = ?, NOWCP = ?, \"EXP\" = ?, \"LEVEL\" = ?, progress = ? " +
+                    "WHERE ID = ? AND NICKNAME = ?";
+
+            pstm = conn.prepareStatement(sql);
+
+            if (getChar[2].equals("방패병")){
+                pstm.setInt(1, 140);
+                pstm.setInt(2, 140);
+                pstm.setInt(3, 90);
+                pstm.setInt(4, 90);
+                pstm.setInt(5, 70);
+                pstm.setInt(6, 70);
+            } else if (getChar[2].equals("검사")){
+                pstm.setInt(1, 100);
+                pstm.setInt(2, 100);
+                pstm.setInt(3, 80);
+                pstm.setInt(4, 80);
+                pstm.setInt(5, 120);
+                pstm.setInt(6, 120);
+            } else if (getChar[2].equals("법사")){
+                pstm.setInt(1, 70);
+                pstm.setInt(2, 70);
+                pstm.setInt(3, 125);
+                pstm.setInt(4, 125);
+                pstm.setInt(5, 105);
+                pstm.setInt(6, 105);
+            }
+
+            pstm.setInt(7, 0);
+            pstm.setInt(8, 1);
+            pstm.setInt(9, 0);
+
+            pstm.setString(10, inputId);
+            pstm.setString(11, getChar[0]);
+
+            int res = pstm.executeUpdate();
+
+            if (res>0) {
+                System.out.println("캐릭터 정보 리셋 성공");
+            } else {
+                System.out.println("캐릭터 정보 리셋 실패");
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                pstm.close();
+                conn.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
     public static String inputNickName(){
         Scanner sc = new Scanner(System.in);
 
@@ -78,32 +146,32 @@ public class CreateCharacter {
             pstm.setInt(13, 0);
 
             if (job.equals("방패병")){
-                pstm.setDouble(5, 140);
-                pstm.setDouble(6, 140);
-                pstm.setDouble(7, 90);
-                pstm.setDouble(8, 90);
-                pstm.setDouble(9, 70);
-                pstm.setDouble(10, 70);
-                pstm.setDouble(11, 0);
-                pstm.setDouble(12, 1);
+                pstm.setInt(5, 140);
+                pstm.setInt(6, 140);
+                pstm.setInt(7, 90);
+                pstm.setInt(8, 90);
+                pstm.setInt(9, 70);
+                pstm.setInt(10, 70);
+                pstm.setInt(11, 0);
+                pstm.setInt(12, 1);
             } else if (job.equals("검사")){
-                pstm.setDouble(5, 100);
-                pstm.setDouble(6, 100);
-                pstm.setDouble(7, 80);
-                pstm.setDouble(8, 80);
-                pstm.setDouble(9, 120);
-                pstm.setDouble(10, 120);
-                pstm.setDouble(11, 0);
-                pstm.setDouble(12, 1);
+                pstm.setInt(5, 100);
+                pstm.setInt(6, 100);
+                pstm.setInt(7, 80);
+                pstm.setInt(8, 80);
+                pstm.setInt(9, 120);
+                pstm.setInt(10, 120);
+                pstm.setInt(11, 0);
+                pstm.setInt(12, 1);
             } else if (job.equals("법사")){
-                pstm.setDouble(5, 70);
-                pstm.setDouble(6, 70);
-                pstm.setDouble(7, 125);
-                pstm.setDouble(8, 125);
-                pstm.setDouble(9, 105);
-                pstm.setDouble(10, 105);
-                pstm.setDouble(11, 0);
-                pstm.setDouble(12, 1);
+                pstm.setInt(5, 70);
+                pstm.setInt(6, 70);
+                pstm.setInt(7, 125);
+                pstm.setInt(8, 125);
+                pstm.setInt(9, 105);
+                pstm.setInt(10, 105);
+                pstm.setInt(11, 0);
+                pstm.setInt(12, 1);
             }
 
             int res = pstm.executeUpdate();
