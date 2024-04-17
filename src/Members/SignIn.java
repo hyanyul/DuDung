@@ -10,25 +10,7 @@ import java.sql.*;
 
 public class SignIn {
 
-    private String signInId;
-    private String signInPw;
-
-    public String getSignInId() {
-        return signInId;
-    }
-
-    public void setSignInId(String signInId) {
-        this.signInId = signInId;
-    }
-
-    public String getSignInPw() {
-        return signInPw;
-    }
-
-    public void setSignInPw(String signInPw) {
-        this.signInPw = signInPw;
-    }
-
+    // 아이디 입력
     public static String inputId(){
         Scanner sc = new Scanner(System.in);
 
@@ -36,7 +18,8 @@ public class SignIn {
 
         return sc.nextLine();
     }
-
+    
+    // 비밀번호 입력
     public static String inputPw(){
         Scanner sc = new Scanner(System.in);
 
@@ -44,7 +27,8 @@ public class SignIn {
 
         return sc.nextLine();
     }
-
+    
+    // 로그인
     public String[] signIn(){
         Scanner sc = new Scanner(System.in);
         Connection conn = null;
@@ -76,13 +60,13 @@ public class SignIn {
 
                 if(checkId.equals(id) && checkPw.equals(pw)){
                     String[] signInArr = new String[2];
-                    System.out.println("로그인 성공");
+                    System.out.println("\n로그인 성공");
                     signInArr[0] = id;
                     signInArr[1] = pw;
                     return signInArr;
                 }
             }
-            System.out.println("로그인 실패");
+            System.out.println("\n로그인 실패");
             System.out.println("존재하지 않는 계정이거나 잘못 입력하였습니다.");
 
 

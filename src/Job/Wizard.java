@@ -27,10 +27,10 @@ public class Wizard extends Job{
 
     @Override
     public int skillMp(int[] getStatus) {
-        System.out.println("~마법 공격 시도~");
+        System.out.println("~마법 공격 시도~\n");
 
         if(getStatus[3] < 5){
-            System.out.println("마나가 부족하여 스킬을 사용할 수 없습니다.");
+            System.out.println("마나가 부족하여 스킬을 사용할 수 없습니다.\n");
             return 0;
         }
 

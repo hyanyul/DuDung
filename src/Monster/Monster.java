@@ -1,5 +1,6 @@
 package Monster;
 
+// 모든 몬스터 부모 클래스
 public class Monster {
     private String monsterName;
     private int nowHP;
@@ -68,9 +69,5 @@ public class Monster {
 
     public void monsterStat(){
         System.out.println("몬스터 스텟");
-    }
-
-    public static void giveExp(int[] getStatus, Monster m){
-        getStatus[6] += m.getGiveExp();
     }
 }

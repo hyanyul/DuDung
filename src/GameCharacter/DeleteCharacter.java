@@ -8,21 +8,24 @@ import java.util.ArrayList;
 import GamePlay.*;
 
 public class DeleteCharacter {
+    
+    // 캐릭터 삭제
     public void deleteCharacter(String inputId, String[] getChar) {
         Connection conn = null;
         PreparedStatement pstm = null;
 
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");   // jdbc 연결
-            System.out.println("JDBC Driver 로드 성공");
+//            System.out.println("JDBC Driver 로드 성공");
 
             String url = "jdbc:oracle:thin:@localhost:1521:xe";
             String user = "ADAM";
             String pw = "1234";
 
             conn = DriverManager.getConnection(url, user, pw);  // db 로드
-            System.out.println("DB 연결 성공");
-
+//            System.out.println("DB 연결 성공");
+            
+            // 조건에 맞는 캐릭터 정보 db에서 삭제하는 sql문
             String sql = "DELETE FROM GAME_CHARACTER " +
                          "WHERE ID = ? AND NICKNAME = ? AND TRIBE = ? AND JOB =?";
 
@@ -47,7 +50,7 @@ public class DeleteCharacter {
             try {
                 pstm.close();
                 conn.close();
-                System.out.println("DB 연결 해제");
+//                System.out.println("DB 연결 해제");
             } catch (SQLException e) {
                 e.printStackTrace();
             }

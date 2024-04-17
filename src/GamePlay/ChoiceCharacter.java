@@ -8,16 +8,24 @@ import java.util.Scanner;
 public class ChoiceCharacter {
     Scanner sc = new Scanner(System.in);
 
+    // 플레이할 캐릭터 선택
     public String[] choiceChar(String id, String fucn) {
-        ArrayList<String> charNickNameArr = checkChar(id);
+        try {
+            ArrayList<String> charNickNameArr = checkChar(id);
 
-        System.out.printf("\n%s할 캐릭터의 번호를 입력하세요: ", fucn);
-        int choice = sc.nextInt() - 1;
-        sc.nextLine();
+            System.out.printf("\n%s할 캐릭터의 번호를 입력하세요: ", fucn);
+            int choice = sc.nextInt() - 1;
+            sc.nextLine();
 
-        return checkChar(id, charNickNameArr.get(choice));
+            return checkChar(id, charNickNameArr.get(choice));
+        } catch (Exception e){
+            System.out.println("선택지 중 하나를 선택해주세요.");
+            return new String[3];
+        }
     }
 
+    // 로그인된 계정에서 만든 캐릭터 목록 출력 및 닉네임 어레이리스트 생성
+    // 어레이리스트(플레이어가 캐릭터 선택하면 선택한 닉네임과 로그인되어 있는 아이디로 캐릭터 찾을 수 있도록 하는 용도)
     public static ArrayList<String> checkChar(String id) {
         Scanner sc = new Scanner(System.in);
         Connection conn = null;
@@ -36,7 +44,8 @@ public class ChoiceCharacter {
 
             conn = DriverManager.getConnection(url, user, password);
 //            System.out.println("DB 연결 성공");
-
+            
+            // 전체 캐릭터 목록 불러옴
             String sql = "SELECT * FROM GAME_CHARACTER";
 
             st = conn.createStatement();
@@ -46,7 +55,8 @@ public class ChoiceCharacter {
             System.out.println("\n[캐릭터 목록]");
             while (rs.next()) {
                 String ID = rs.getString("ID");
-
+                
+                // 현재 입력되어 있는 아이디와 같은 캐릭터만 불러옴
                 if (ID.equals(id)) {
                     String nickName = rs.getString("NICKNAME");
                     String tribe = rs.getString("TRIBE");
@@ -73,6 +83,7 @@ public class ChoiceCharacter {
         }
     }
 
+    // 선택한 캐릭터의 닉네임과 로그인된 아이디를 활용해 선택한 캐릭터의 스텟을 전부 불러오는 메소드
     public static String[] checkChar(String inputId, String inputNickName) {
         Scanner sc = new Scanner(System.in);
         Connection conn = null;
@@ -127,7 +138,8 @@ public class ChoiceCharacter {
             }
         }
     }
-
+    
+    // db에 저장된 스텟 받아옴
     public int[] getStatus(String inputId, String inputNickName) {
         Scanner sc = new Scanner(System.in);
         Connection conn = null;
@@ -178,7 +190,7 @@ public class ChoiceCharacter {
                     charStatus[8] = progress;
 
 
-                    System.out.println("캐릭터 정보 로드 완료");
+                    System.out.println("\n캐릭터 정보 로드 완료\n");
                 }
             }
 

@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class LogSave {
+    
+    // 게임 로그 저장
     public void logSave(String ID, String[] getChar, int[] getStatus){
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -17,7 +19,8 @@ public class LogSave {
             String password = "1234";
 
             conn = DriverManager.getConnection(url, user, password);
-
+            
+            // 게임 중 변경된 스텟을 db에 저장
             String sql = "UPDATE GAME_CHARACTER SET HP = ?, NOWHP = ?, MP = ?, " +
                          "NOWMP = ?, CP = ?, NOWCP = ?, \"EXP\" = ?, \"LEVEL\" = ?, PROGRESS = ? " +
                          "WHERE ID = ? AND NICKNAME = ?";
