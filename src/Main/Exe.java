@@ -76,19 +76,8 @@ public class Exe {
                         System.out.println("로그인 후 게임 플레이가 가능합니다.\n");
                         break;
                     }
-
-                case 5:     // 로그아웃
-                    if(signInArr[0] != null || signInArr[1] != null) {
-                        signInArr[0] = null;
-                        signInArr[1] = null;
-                        System.out.println("로그아웃 되었습니다.\n");
-                        break;
-                    } else {
-                        System.out.println("이미 로그아웃 되어 있습니다.\n");
-                        break;
-                    }
                     
-                case 6:     // 캐릭터 삭제
+                case 5:     // 캐릭터 삭제
                     if(signInArr[0] != null || signInArr[1] != null) {
                         String[] getChar = chc.choiceChar(signInArr[0], "삭제");
 
@@ -107,13 +96,15 @@ public class Exe {
                         break;
                     }
 
-                case 7:     // 계정 삭제
+                case 6:     // 계정 삭제
                     if(signInArr[0] != null || signInArr[1] != null) {
                         System.out.println(RED + "[경고!]계정을 삭제하면 기존의 캐릭터도 모두 삭제됩니다." + EXIT);
                         System.out.print("계정을 정말 삭제하고 싶다면 비밀번호를 입력하세요: ");
 
                         String checkPw = sc.nextLine();
 
+                        System.out.println();
+                        
                         if(checkPw.equals(signInArr[1])){
                             da.deleteAccount(signInArr[0], signInArr[1]);
                             signInArr = new String[2];
@@ -124,6 +115,17 @@ public class Exe {
                         break;
                     } else {
                         System.out.println("로그인 후 계정 삭제가 가능합니다.\n");
+                        break;
+                    }
+
+                case 7:     // 로그아웃
+                    if(signInArr[0] != null || signInArr[1] != null) {
+                        signInArr[0] = null;
+                        signInArr[1] = null;
+                        System.out.println("로그아웃 되었습니다.\n");
+                        break;
+                    } else {
+                        System.out.println("이미 로그아웃 되어 있습니다.\n");
                         break;
                     }
                     
@@ -143,7 +145,7 @@ public class Exe {
     public static int menu(){
         System.out.println("""
                 \n1. 회원가입 | 2. 로그인 | 3. 캐릭터 생성 | 4. 게임 플레이
-                5. 로그아웃 | 6. 캐릭터 삭제 | 7. 계정 삭제 | 8. 종료""");
+                5. 캐릭터 삭제 | 6. 계정 삭제 | 7. 로그아웃 | 8. 종료""");
         System.out.print("선택: ");
         try {
             int choice = sc.nextInt();

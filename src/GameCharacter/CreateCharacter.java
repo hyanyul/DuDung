@@ -12,7 +12,7 @@ public class CreateCharacter {
         String nickName = inputNickName();
         String tribe = inputTribe();
 
-        if (nickName.getBytes().length <= 30 || tribe.getBytes().length <= 30) {
+        if (nickName.getBytes().length > 30 || tribe.getBytes().length > 30) {
             System.out.println("닉네임과 종족명은 최대 30바이트로 입력 가능합니다.");
             return;
         }
