@@ -6,8 +6,7 @@
 ## ERD
 ![db](https://github.com/hyanyul/DuDung/assets/158116933/9ce0eead-2670-4d4e-aba4-1639a96e7351)
 
-## 자세한 내용
-![ppt](https://www.canva.com/design/DAGCuhrcVw8/SYqv1fZSqI28YN2znrUwLw/edit?utm_content=DAGCuhrcVw8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+## [자세한 내용](https://www.canva.com/design/DAGCuhrcVw8/O3TFogqdxcO_2JDWf-wPBw/view?utm_content=DAGCuhrcVw8&utm_campaign=designshare&utm_medium=link&utm_source=editor)
 
 ## 기술 스택
 <p>BackEnd</p>
